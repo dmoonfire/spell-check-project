@@ -1,0 +1,27 @@
+{
+  "name": "spell-check-en-us",
+  "version": "0.0.0",
+  "main": "./lib/main",
+  "description": "Highlights misspelled words and shows possible corrections for American English (en-US).",
+  "dependencies": {
+    "atom-space-pen-views": "^2.0.0",
+    "spell-check": "0.66.0",
+    "spellchecker": "3.2.0",
+    "underscore-plus": "^1"
+  },
+  "repository": "https://github.com/dmoonfire/spell-check-en-us",
+  "license": "MIT",
+  "engines": {
+    "atom": "*"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.9.7"
+  },
+  "providedServices": {
+    "spell-check": {
+      "versions": {
+        "1.0.0": "provideSpellCheck"
+      }
+    }
+  }
+}
