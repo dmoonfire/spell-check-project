@@ -12,6 +12,9 @@ class Checker
   deactivate: ->
     console.log("deactivating en-us")
 
+  checkSpelling: (text) ->
+    { incorrect: @spellchecker.checkSpelling(text) }
+
   getMispelledRanges: (text) ->
     @spellchecker.checkSpelling(text)
 
