@@ -2,8 +2,8 @@ module.exports =
   instance: null
 
   activate: (@state) ->
-    Checker = require('./checker.coffee')
-    @instance = new Checker state
+    ProjectChecker = require('./project-checker.coffee')
+    @instance = new ProjectChecker
 
   serialize: ->
     @state

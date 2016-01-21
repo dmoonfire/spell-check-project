@@ -1,13 +1,11 @@
 {
-  "name": "spell-check-en-us",
+  "name": "spell-check-project",
   "version": "0.0.0",
   "main": "./lib/main",
-  "description": "Highlights misspelled words and shows possible corrections for American English (en-US).",
+  "description": "Provides project-specific spell checking, suggestions, and dictionaries.",
   "dependencies": {
-    "spellchecker": "3.2.0",
-    "underscore-plus": "^1"
   },
-  "repository": "https://github.com/dmoonfire/spell-check-en-us",
+  "repository": "https://github.com/dmoonfire/spell-check-project",
   "license": "MIT",
   "engines": {
     "atom": "*"
