@@ -22,7 +22,11 @@ class ProjectChecker
     if not project or not project.valid
       false
     true
-  providesAdding: (buffer) -> false
+  providesAdding: (buffer) ->
+    project = @getProject buffer
+    if not project or not project.valid
+      false
+    true
 
   check: (buffer, text) ->
     # If we don't have language settings, we don't do anything.
@@ -82,6 +86,30 @@ class ProjectChecker
     for key in keys
       results.push s[key].text
     results
+
+  getAddingTargets: (buffer) ->
+    [
+      {sensitive: false, label: "Add to " + @getName() + " (case-insensitive)"},
+      {sensitive: true, label: "Add to " + @getName() + " (case-sensitive)"}
+    ]
+
+  add: (buffer, target) ->
+    # If we don't have language settings, we don't do anything.
+    project = @getProject buffer
+    if not project or not project.valid
+      return {}
+
+    # Build up the pattern we'll be using.
+    flag = "i"
+    if target.sensitive
+      flag = ""
+    pattern = "/" + target.word + "/" + flag
+
+    # Add the project and force it to reload.
+    if not project.json.ignoreWords
+      project.json.ignoreWords = []
+    project.json.ignoreWords.push pattern
+    @saveProject buffer, project
 
   setIgnores: (project) ->
     project.ignores = []
@@ -143,5 +171,19 @@ class ProjectChecker
 
     # We have a `language.json`, so make sure it is loaded.
     console.log "Checking project", languagePath
+
+  saveProject: (buffer, project) ->
+    path = require "path"
+    fs = require "fs"
+
+    try
+      # Figure out the path and save the file. The file watcher will cause this
+      # to reload.
+      [projectPath, relativePath] = atom.project.relativizePath(buffer.file.path)
+      languagePath = path.join projectPath, "language.json"
+      jsonText = JSON.stringify project.json, null, "\t"
+      fs.writeFileSync languagePath, jsonText
+    catch
+      console.log "error"
 
 module.exports = ProjectChecker
