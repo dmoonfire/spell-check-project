@@ -136,6 +136,10 @@ class ProjectChecker
       { regex: r, text: input, flags: f }
 
   getProject: (buffer) ->
+    # If there is no file, we can't find a project.
+    if not buffer?.file?.path
+      return { valid: false, json: null }
+
     # First see if we have the item already cached. If we do, then just use that.
     [projectPath, relativePath] = atom.project.relativizePath(buffer.file.path)
     if @projects.hasOwnProperty projectPath
