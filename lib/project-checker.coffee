@@ -106,15 +106,15 @@ class ProjectChecker
     pattern = "/" + target.word + "/" + flag
 
     # Add the project and force it to reload.
-    if not project.json.ignoreWords
-      project.json.ignoreWords = []
-    project.json.ignoreWords.push pattern
+    if not project.json.knownWords
+      project.json.knownWords = []
+    project.json.knownWords.push pattern
     @saveProject buffer, project
 
   setIgnores: (project) ->
     project.ignores = []
-    if project.json.ignoreWords
-      for ignore in project.json.ignoreWords
+    if project.json.knownWords
+      for ignore in project.json.knownWords
         project.ignores.push @makeIgnore ignore
 
   makeIgnore: (input) ->
