@@ -1,6 +1,6 @@
 {
   "name": "spell-check-project",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "./lib/main",
   "description": "Provides project-specific spell checking, suggestions, and dictionaries.",
   "dependencies": {
