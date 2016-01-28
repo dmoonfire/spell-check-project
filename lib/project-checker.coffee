@@ -143,7 +143,8 @@ class ProjectChecker
     # First see if we have the item already cached. If we do, then just use that.
     [projectPath, relativePath] = atom.project.relativizePath(buffer.file.path)
     if @projects.hasOwnProperty projectPath
-      return @projects[projectPath]
+      project = @projects[projectPath]
+      return project
 
     # We don't have it cached, so load the `language.json` into memory.
     path = require "path"
@@ -168,9 +169,9 @@ class ProjectChecker
       that = this
       @projects[projectPath].watcher = fs.watch languagePath, (ev, f) ->
         delete that.projects[projectPath]
-    catch
+    catch err
       # lstatSync throws an exception, so just clear it out.
-      @projects[projectPath] = { valid: false, json: null }
+      @projects[projectPath] = { valid: false, json: null, error: err }
     return @projects[projectPath]
 
     # We have a `language.json`, so make sure it is loaded.
