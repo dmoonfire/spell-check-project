@@ -122,7 +122,8 @@ class ProjectChecker
     if m
       # Build up the regex from the components. We can't handle "g" in the flags,
       # so quietly remove it.
-      f = m[2].replace("g", "")
+      f = m[2].replace "g", ""
+      f = f.replace "y", ""
       r = new RegExp m[1], f
       { regex: r, text: m[1], flags: f }
     else
