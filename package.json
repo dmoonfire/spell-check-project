@@ -4,7 +4,7 @@
   "main": "./lib/main",
   "description": "Provides project-specific spell checking, suggestions, and dictionaries.",
   "dependencies": {
-    "natural": "^0.2.1"
+    "spelling-manager": "0.3.0"
   },
   "repository": "https://github.com/dmoonfire/spell-check-project",
   "license": "MIT",
