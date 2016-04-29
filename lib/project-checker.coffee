@@ -141,4 +141,5 @@ class ProjectChecker
     catch err
       console.error @getId(), "Could not save project file:", err
 
-module.exports = ProjectChecker
+checker = new ProjectChecker()
+module.exports = checker

@@ -2,14 +2,12 @@ module.exports =
   instance: null
 
   activate: (@state) ->
-    ProjectChecker = require('./project-checker.coffee')
-    @instance = new ProjectChecker
 
   serialize: ->
     @state
 
   provideSpellCheck: ->
-    @instance
+    require.resolve './project-checker.coffee'
 
   deactivate: ->
-    @instance?.deactivate()
+    return
