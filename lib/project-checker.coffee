@@ -2,10 +2,12 @@ class ProjectChecker
   projects: {}
 
   constructor: ->
-    console.log(@getId() + ": activing")
+    #console.log(@getId() + ": activing")
+    return
 
   deactivate: ->
-    console.log(getId() + ": deactivating")
+    #console.log(getId() + ": deactivating")
+    return
 
   getId: -> "spell-check-project"
   getName: -> "Project Dictionary"
@@ -32,15 +34,35 @@ class ProjectChecker
     # If we don't have language settings, we don't do anything.
     project = @getProject args
     if not project or not project.valid
-      return {}
+      return { }
 
     # Check the range for this dictionary.
     ranges = []
     checked = project.checker.check text
     for token in checked
-      if token.status == 1
+      if token.status is 1
         ranges.push {start: token.start, end: token.end }
     { correct: ranges }
+
+  checkArray: (args, words) ->
+    project = @getProject args
+    results = []
+    if not project or not project.valid
+      # We don't have a project settings, so everything is unknown.
+      for word in words
+        results.push null
+    else
+      # We have a project, so check each one directly.
+      for word, index in words
+        checked = project.checker.check word
+        if checked[0].status is 1
+          results.push true
+        else
+          results.push null
+
+    # Return the results for the words, either all nulls or verified against the
+    # project file.
+    results
 
   suggest: (args, word) ->
     # If we don't have language settings, we don't do anything.
