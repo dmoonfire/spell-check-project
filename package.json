@@ -1,6 +1,6 @@
 {
   "name": "spell-check-project",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "main": "./lib/main",
   "description": "Provides project-specific spell checking, suggestions, and dictionaries.",
   "repository": "https://github.com/dmoonfire/spell-check-project",
