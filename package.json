@@ -3,16 +3,10 @@
   "version": "0.7.0",
   "main": "./lib/main",
   "description": "Provides project-specific spell checking, suggestions, and dictionaries.",
-  "dependencies": {
-    "spelling-manager": "0.3.0"
-  },
   "repository": "https://github.com/dmoonfire/spell-check-project",
   "license": "MIT",
   "engines": {
-    "atom": "*"
-  },
-  "devDependencies": {
-    "coffeelint": "^1.9.7"
+    "atom": ">=1.25.0 <2.0.0"
   },
   "providedServices": {
     "spell-check": {
@@ -20,5 +14,22 @@
         "1.0.0": "provideSpellCheck"
       }
     }
+  },
+  "dependencies": {
+    "spelling-manager": "0.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@semantic-release/apm-config": "^8.0.0",
+    "coffeelint": "^1.9.7",
+    "husky": "^6.0.0",
+    "prettier": "^1.18.2",
+    "semantic-release": "^17.4.2"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
