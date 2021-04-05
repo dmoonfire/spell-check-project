@@ -8,6 +8,9 @@
   "engines": {
     "atom": ">=1.25.0 <2.0.0"
   },
+  "scripts": {
+    "format": "prettier --write lib/*.js"
+  },
   "providedServices": {
     "spell-check": {
       "versions": {
@@ -22,7 +25,6 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@semantic-release/apm-config": "^8.0.0",
-    "coffeelint": "^1.9.7",
     "husky": "^6.0.0",
     "prettier": "^1.18.2",
     "semantic-release": "^17.4.2"

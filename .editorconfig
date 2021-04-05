@@ -1,15 +1,17 @@
 # EditorConfig is awesome: http://EditorConfig.org
 
-# top-most EditorConfig file
+# This is the top-most EditorConfig file.
 root = true
 
 [*]
-indent_size = 2
+indent_size = 4
 indent_style = space
 insert_final_newline = true
 max_line_length = 80
-tab_width = 2
+tab_width = 4
 trim_trailing_whitespace = true
+quote_type = double
 
-[*.{js,ts,coffee}]
-quote_type = single
+[package.json]
+indent_size = 2
+tab_width = 2
