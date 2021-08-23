@@ -23,16 +23,11 @@
     "spelling-manager": "0.3.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
-    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@semantic-release/apm-config": "^8.0.0",
-    "husky": "^6.0.0",
-    "prettier": "^1.18.2",
-    "semantic-release": "^17.4.2"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "husky": "^7.0.1",
+    "prettier": "^2.3.2",
+    "semantic-release": "^17.4.5"
   }
 }
